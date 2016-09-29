@@ -21,7 +21,8 @@ describe CustomerParser do
 
     private
 
-    # ...I can't decide if it's weird or not that there's a private spec method, but w/e
+    # the files are checked in so this doesn't actually do anything but...
+    # you know... just in case we need it later
     def generate_csv_file(path, delimiter)
       CSV.open(path, 'wb', {col_sep: delimiter }) do |csv|
         csv << headers.values

@@ -26,7 +26,7 @@ describe Customer do
       expect { customer2.nonsense }.to raise_error NoMethodError
     end
 
-    # it 'does not have any required fields' do # needed? need product answer.
+    # it 'does not have any required fields' do... # needed?
   end
 
   describe 'Sorting Behavior' do
