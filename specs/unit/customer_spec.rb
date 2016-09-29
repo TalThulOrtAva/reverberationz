@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/../specs/spec_helper'
+require File.dirname(__FILE__) + '/spec_helper'
 
 describe Customer do
   let(:attributes1) { { lname: 'Eeeeia', fname: 'Sandi', gender: 'Female', favorite_color: 'blue', date_of_birth: Date.today - 25.years } }

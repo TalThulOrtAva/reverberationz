@@ -1,7 +1,7 @@
-class CustomerParser
-  require_relative 'customer'
-  require 'CSV'
+require_relative 'customer'
+require 'CSV'
 
+class CustomerParser
   attr_reader :data
 
   def initialize(path, delimiter)
