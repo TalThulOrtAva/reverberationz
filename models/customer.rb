@@ -1,18 +1,25 @@
 class Customer
-  APPROVED_FIELDS = %i(fname lname gender date_of_birth favorite_color)
+  APPROVED_FIELDS = %i(email fname lname gender date_of_birth favorite_color)
   attr_accessor *APPROVED_FIELDS
 
   def initialize(attrs)
-    customer_data = drop_unapproved_fields(attrs)
-    instantiate_fields(customer_data)
+    raise EmailRequiredForCustomer unless attrs[:email]
+
+    @db = DatabaseAccessor.new
+    @raw_attrs = attrs
+    @customer_data = instantiate_fields
   end
 
-  def instantiate_fields(customer_data)
-    customer_data.each { |name, value| instance_variable_set("@#{name}", value) }
+  def save!
+    @db.set(email, @customer_data)
   end
 
-  def drop_unapproved_fields(attrs)
-    attrs.select { |key| APPROVED_FIELDS.include? key }
+  def instantiate_fields
+    drop_unapproved_fields.each { |name, value| instance_variable_set("@#{name}", value) }
+  end
+
+  def drop_unapproved_fields
+    @raw_attrs.select { |key| APPROVED_FIELDS.include? key }
   end
 
   # lambdas to pass for sorting, to avoid a collective class (not generally a fan unless it's an attribute of another object)
@@ -29,3 +36,5 @@ class Customer
     lambda { |a,b| b.lname.downcase <=> a.lname.downcase }
   end
 end
+
+class EmailRequiredForCustomer < StandardError; end

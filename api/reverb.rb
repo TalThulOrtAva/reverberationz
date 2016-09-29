@@ -1,5 +1,5 @@
 require '../models/customer'
-require '../models/customer_parser'
+require '../models/csv_customer_parser'
 
 module Reverb
   class API < Grape::API
