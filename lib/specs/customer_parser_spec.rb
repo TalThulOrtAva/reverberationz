@@ -3,7 +3,7 @@ require File.dirname(__FILE__) + '/../specs/spec_helper'
 describe CustomerParser do
   let(:headers){ { lname: 'lname', fname: 'fname', gender: 'gender', favorite_color: 'favorite_color', date_of_birth: 'date_of_birth' } }
   let(:row1){ { lname: 'Eeeeia',  fname: 'Sandi',  gender: 'Female',  favorite_color: 'Blue',  date_of_birth: Date.today - 25.years } }
-  let(:row2){ { lname: 'Ava', fname: 'Ciccarelli', gender: 'female', favorite_color: 'green', date_of_birth: Date.today - 27.years } }
+  let(:row2){ { lname: 'Alie', fname: 'Cokeman', gender: 'female', favorite_color: 'green', date_of_birth: Date.today - 27.years } }
   let(:data){ [row1, row2] }
 
   describe '#parse' do
@@ -22,7 +22,7 @@ describe CustomerParser do
     private
 
     # the files are checked in so this doesn't actually do anything but...
-    # you know... just in case we need it later
+    # you know... just in case we need it later... or something... bc I already wrote it...
     def generate_csv_file(path, delimiter)
       CSV.open(path, 'wb', {col_sep: delimiter }) do |csv|
         csv << headers.values

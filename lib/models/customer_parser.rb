@@ -5,15 +5,17 @@ class CustomerParser
   attr_reader :data
 
   def initialize(path, delimiter)
-    @data = read_file(path, delimiter)
+    @path = path
+    @delimiter = delimiter
+    @data = read_file
     convert_csv_to_hash!
     convert_dates!
   end
 
   private
 
-  def read_file(path, delimiter)
-    CSV::parse(File.open(path).read, headers: true, col_sep: delimiter)
+  def read_file
+    CSV::parse(File.open(@path).read, headers: true, col_sep: @delimiter)
   end
 
   def convert_dates!
