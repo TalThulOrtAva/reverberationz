@@ -15,6 +15,7 @@ class Customers
     @customers.sort_by{ |customer| [customer.gender, customer.lname] }
   end
 
+  # TODO create spec for Customers, add these from customer_spec
   def by_dob
     @customers.sort_by(&:date_of_birth)
   end
