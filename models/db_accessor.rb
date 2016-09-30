@@ -11,7 +11,13 @@ class DBAccessor
     !db_entry.nil? ? Marshal.load(db_entry) : nil
   end
 
-  def set_customer(customer)
+  def add_customer(customer)
+    return NotUniqueError if get_customer(customer.email)
+    @redis.set(customer.email, Marshal.dump(customer))
+  end
+
+  def update_customer(customer)
+    return CustomerDoesNotExist unless get_customer(customer.email)
     @redis.set(customer.email, Marshal.dump(customer))
   end
 
@@ -27,3 +33,7 @@ class DBAccessor
     @redis.FLUSHALL if OS.osx? || OS.windows?
   end
 end
+
+class NotUniqueError < StandardError; end
+class CustomerDoesNotExist < StandardError; end
+

@@ -2,6 +2,7 @@ require_relative 'customer'
 require 'CSV'
 
 # TODO name class better or increase scope, it only works with customers
+# sometimes I feel like the CSV lib is intentionally clunky explicitly for code challenges
 class CSVParser
   attr_reader :raw_data, :customers
 
@@ -11,7 +12,6 @@ class CSVParser
     import!
   end
 
-  # TODO move formatting (case, date conversation) into customer initialization
   def self.parse_row(string, delimiter)
     data = string.parse_csv(headers: true, col_sep: delimiter).to_h.symbolize_keys!
     data[:date_of_birth] = data[:date_of_birth].to_date
@@ -20,7 +20,7 @@ class CSVParser
 
   private
 
-  def import! # !!!! !!! !! ! exclamations r exciting
+  def import!
     read_file!
     convert!
   end
@@ -40,6 +40,7 @@ class CSVParser
     @raw_data = CSV::parse(File.open(@path).read, headers: true, col_sep: @delimiter)
   end
 
+  # TODO probably would make more sense that the customer object would do date conversion/string downcasing
   def fix_case!
     @raw_data = raw_data.each do |customer|
       customer.each { |value| value.downcase! if value.class == String }

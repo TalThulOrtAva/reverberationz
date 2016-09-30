@@ -1,30 +1,35 @@
 require_relative 'db_accessor'
 
 class Customers
+  attr_accessor :all
+
   def initialize(customers = [])
     @db = DBAccessor.new
-    @customers = customers
-    refresh! if customers.empty?
+    @all = customers
   end
 
   def refresh!
-    @customers = DBAccessor.new.get_all_customers
+    @all = DBAccessor.new.get_all_customers || []
   end
 
   # TODO create spec for Customers, add these from customer_spec
   def by_gender
-    @customers.sort_by{ |customer| [customer.gender, customer.lname] }
+    @all.sort_by{ |customer| [customer.gender, customer.lname] }
   end
 
   def by_dob
-    @customers.sort_by(&:date_of_birth)
+    @all.sort_by(&:date_of_birth)
   end
 
   def by_lname
-    @customers.sort_by(&:lname).reverse!
+    @all.sort_by(&:lname).reverse! # benchmark showed this as the fastest option, although that isn't intuitive
   end
 
   def add(customer)
-    @db.set_customer(customer)
+    @db.add_customer(customer)
+  end
+
+  def update(customer)
+    @db.update_customer(customer)
   end
 end

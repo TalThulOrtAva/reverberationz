@@ -1,4 +1,4 @@
 #\ -p 3000
-require File.expand_path('api/reverb', File.dirname(__FILE__))
+require_relative 'api/reverb'
 
-run Reverb
+run Reverb::Customer_API
