@@ -1,7 +1,7 @@
 require 'redis'
 require 'os'
 
-class DatabaseAccessor
+class DbAccessor
   def initialize
     @redis = Redis.new
   end

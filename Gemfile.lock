@@ -80,6 +80,7 @@ DEPENDENCIES
   grape
   os
   pry
+  rack
   redis
   require_all
   rspec

@@ -3,8 +3,8 @@ require 'rspec'
 describe 'csv to redis' do
 
   it 'should import csv files to the redis db' do
-    db = DatabaseAccessor.new
-    parsed = CustDataParser.new('specs/fixtures/comma_data.csv', ',')
+    db = DbAccessor.new
+    parsed = CsvParser.new('specs/fixtures/comma_data.csv', ',')
     parsed.customers.each { |customer| db.set_customer(customer) }
     customers_from_db = db.get_all_customers
     expect(customers_from_db.count).to eq(2)
