@@ -1,6 +1,7 @@
 require_relative 'customer'
 require 'CSV'
 
+# TODO name class better, it only works with customers
 class CSVParser
   attr_reader :raw_data, :customers
 
@@ -10,10 +11,21 @@ class CSVParser
     import!
   end
 
+  # TODO move formatting (case, date conversation) into customer initialization
+  def self.parse_row(string, delimiter)
+    data = string.parse_csv(headers: true, col_sep: delimiter).to_h.symbolize_keys!
+    data[:date_of_birth] = data[:date_of_birth].to_date
+    Customer.new(data)
+  end
+
   private
 
-  def import!
-    read_file
+  def import! # !!!! !!! !! ! exclamations r exciting
+    read_file!
+    convert!
+  end
+
+  def convert!
     convert_csv_to_hash!
     convert_dates!
     fix_case!
@@ -24,7 +36,7 @@ class CSVParser
     @customers = @raw_data.map{ |cust_data| Customer.new(cust_data)}
   end
 
-  def read_file
+  def read_file!
     @raw_data = CSV::parse(File.open(@path).read, headers: true, col_sep: @delimiter)
   end
 

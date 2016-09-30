@@ -1,4 +1,5 @@
 require 'grape'
+require 'json'
 
 class Reverb < Grape::API
   version 'v1', using: :header, vendor: 'goddess herself'
@@ -6,8 +7,8 @@ class Reverb < Grape::API
   prefix :api
 
   helpers do
-    def something
-      # TODO
+    def Customers
+
     end
 
     def something_else

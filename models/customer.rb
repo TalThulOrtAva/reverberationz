@@ -8,9 +8,7 @@ class Customer
     @customer_data = instantiate_fields
   end
 
-  def to_h
-    APPROVED_FIELDS.map { |field| self.send(field) }
-  end
+  private
 
   def instantiate_fields
     drop_unapproved_fields.each { |name, value| instance_variable_set("@#{name}", value) }

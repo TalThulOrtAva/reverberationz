@@ -35,7 +35,6 @@ describe Customer do
     let(:customers) { [ customer1, customer2, customer3, customer4, customer5 ] }
 
     it 'can be sorted by gender asc, then last name asc' do
-      customers.sort_by{ |c| [c.gender, c.lname] }
       sorted = customers.sort_by{ |customer| [customer.gender, customer.lname] }
       expect(sorted).to eq(([customer5, customer4, customer2, customer1, customer3]))
     end

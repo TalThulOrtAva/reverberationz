@@ -15,7 +15,7 @@ class DBAccessor
     @redis.set(customer.email, Marshal.dump(customer))
   end
 
-  def get_all_customers
+  def get_all_customers # this sucks but it'll spark a conversation about redis strategy and use cases
     @redis.keys('*@*').inject([]) { |customers, x| customers << @redis.get(x) }.map { |customer| Marshal.load(customer) }
   end
 
@@ -23,7 +23,7 @@ class DBAccessor
     @redis.expire(key, 0)
   end
 
-  def flush_all # (this is lazy prod protection just to show it was a concern)
+  def flush_all # (lazy prod protection just to show it was a concern)
     @redis.FLUSHALL if OS.osx? || OS.windows?
   end
 end
