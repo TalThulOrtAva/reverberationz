@@ -1,7 +1,7 @@
 require_relative 'customer'
 require 'CSV'
 
-# TODO name class better, it only works with customers
+# TODO name class better or increase scope, it only works with customers
 class CSVParser
   attr_reader :raw_data, :customers
 

@@ -7,12 +7,12 @@ class Reverb < Grape::API
   prefix :api
 
   helpers do
-    def Customers
-
+    def customers
+      Customers.new.refresh!
     end
 
-    def something_else
-      # TODO
+    def csv_parser
+
     end
   end
 

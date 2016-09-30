@@ -2,9 +2,9 @@ require_relative 'db_accessor'
 
 class Customers
   def initialize(customers = [])
-    refresh! if customers.empty?
-    @customers = customers
     @db = DBAccessor.new
+    @customers = customers
+    refresh! if customers.empty?
   end
 
   def refresh!
@@ -24,7 +24,6 @@ class Customers
   end
 
   def add(customer)
-
     @db.set_customer(customer)
   end
 end
