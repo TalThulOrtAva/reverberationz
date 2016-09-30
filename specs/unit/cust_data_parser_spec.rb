@@ -1,8 +1,8 @@
 require File.dirname(__FILE__) + '/spec_helper'
 
 describe CustDataParser do
-  let(:row1){ { lname: 'Eeeeia',  fname: 'Sandi',  gender: 'Female',  favorite_color: 'Blue',  date_of_birth: Date.today - 25.years } }
-  let(:row2){ { lname: 'Alie', fname: 'Cokeman', gender: 'female', favorite_color: 'green', date_of_birth: Date.today - 27.years } }
+  let(:row1){ { email: 'a@a.com', lname: 'Eeeeia',  fname: 'Sandi',  gender: 'Female',  favorite_color: 'Blue',  date_of_birth: Date.today - 25.years } }
+  let(:row2){ { email: 'b@b.com', lname: 'Alie', fname: 'Cokeman', gender: 'female', favorite_color: 'green', date_of_birth: Date.today - 27.years } }
   let(:data){ [row1, row2] }
 
   describe '#parse' do

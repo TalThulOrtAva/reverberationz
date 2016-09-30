@@ -4,14 +4,12 @@ class Customer
 
   def initialize(attrs)
     raise EmailRequiredForCustomer unless attrs[:email]
-
-    @db = DatabaseAccessor.new
     @raw_attrs = attrs
     @customer_data = instantiate_fields
   end
 
-  def save!
-    @db.set(email, @customer_data)
+  def to_h
+    APPROVED_FIELDS.map { |field| self.send(field) }
   end
 
   def instantiate_fields
@@ -20,20 +18,6 @@ class Customer
 
   def drop_unapproved_fields
     @raw_attrs.select { |key| APPROVED_FIELDS.include? key }
-  end
-
-  # lambdas to pass for sorting, to avoid a collective class (not generally a fan unless it's an attribute of another object)
-  # not really sold on whether they should be static or not
-  def self.gender_sort_method
-    lambda { |a,b| [a.gender.downcase, a.lname.downcase] <=> [b.gender.downcase, a.lname.downcase] }
-  end
-
-  def self.dob_sort_method
-    lambda { |a,b| a.date_of_birth <=> b.date_of_birth }
-  end
-
-  def self.lname_sort_method
-    lambda { |a,b| b.lname.downcase <=> a.lname.downcase }
   end
 end
 

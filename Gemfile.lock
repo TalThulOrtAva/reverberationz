@@ -39,6 +39,7 @@ GEM
     multi_xml (0.5.5)
     mustermann19 (0.4.4)
       enumerable-lazy
+    os (0.9.6)
     pry (0.10.4)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -77,6 +78,7 @@ PLATFORMS
 DEPENDENCIES
   activesupport
   grape
+  os
   pry
   redis
   require_all

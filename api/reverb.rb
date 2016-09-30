@@ -19,7 +19,7 @@ module Reverb
 
     resource :customers do
       desc 'return whatever'
-      get :sort do
+      get_customer :sort do
         # TODO
       end
     end

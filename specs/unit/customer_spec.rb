@@ -32,21 +32,22 @@ describe Customer do
   end
 
   describe 'Sorting Behavior' do
-    let(:customers) { [customer5, customer4, customer3, customer2, customer1] }
+    let(:customers) { [ customer1, customer2, customer3, customer4, customer5 ] }
 
-    it 'can be sorted by gender, female first, then last name asc' do
-      sorting_method = Customer.gender_sort_method
-      expect(customers.sort &(sorting_method)).to eq [customer5, customer4, customer2, customer1, customer3]
+    it 'can be sorted by gender asc, then last name asc' do
+      customers.sort_by{ |c| [c.gender, c.lname] }
+      sorted = customers.sort_by{ |customer| [customer.gender, customer.lname] }
+      expect(sorted).to eq(([customer5, customer4, customer2, customer1, customer3]))
     end
 
     it 'can be sorted by date of birth, ascending' do
-      sorting_method = Customer.dob_sort_method
-      expect(customers.sort &(sorting_method)).to eq [customer2, customer1, customer4, customer3, customer5]
+      sorted = customers.sort_by(&:date_of_birth)
+      expect(sorted).to eq(([customer2, customer1, customer4, customer3, customer5]))
     end
 
     it 'can be sorted by last name, descending' do
-      sorting_method = Customer.lname_sort_method
-      expect(customers.sort &(sorting_method)).to eq [customer1, customer2, customer3, customer4, customer5]
+      sorted = customers.sort_by(&:lname).reverse! # benchmark showed this was fastest
+      expect(sorted).to eq(([customer1, customer2, customer3, customer4, customer5]))
     end
   end
 end

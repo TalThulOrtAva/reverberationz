@@ -1,20 +1,29 @@
 require 'redis'
+require 'os'
 
 class DatabaseAccessor
   def initialize
     @redis = Redis.new
   end
 
-  def get(key)
-    @redis.hgetall(key)
+  def get_customer(key)
+    db_entry = @redis.get(key)
+    !db_entry.nil? ? Marshal.load(db_entry) : nil
   end
 
-  def set(key, hash)
-    @redis.mapped_hmset(key, hash)
+  def set_customer(customer)
+    @redis.set(customer.email, Marshal.dump(customer))
   end
 
-  # lol redis is a silly choice for this app but w/e
-  def get_all
-    @redis.keys('*').inject([]){ |memo, x| memo << @redis.hgetall(x) }
+  def get_all_customers
+    @redis.keys('*@*').inject([]) { |customers, x| customers << @redis.get(x) }.map { |customer| Marshal.load(customer) }
+  end
+
+  def expire_customer(key)
+    @redis.expire(key, 0)
+  end
+
+  def flush_all # (this is lazy prod protection just to show it was a concern)
+    @redis.FLUSHALL if OS.osx? || OS.windows?
   end
 end
