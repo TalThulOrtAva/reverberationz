@@ -2,8 +2,8 @@ require File.dirname(__FILE__) + '/spec_helper'
 
 # I think it would be ridic silly to use redis for this, but
 # whatever, I'm just gonna use it b/c it was in the ad
-describe DbAccessor do
-  accessor = DbAccessor.new
+describe DBAccessor do
+  accessor = DBAccessor.new
   let(:customer){ Customer.new({ email: 'The@Fragile.nin', fname: 'JustLikeYouImagined' })}
 
   before(:each) { accessor.flush_all }
