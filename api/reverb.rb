@@ -1,6 +1,6 @@
 require 'grape'
 
-class API < Grape::API
+class Reverb < Grape::API
   version 'v1', using: :header, vendor: 'goddess herself'
   format :json
   prefix :api

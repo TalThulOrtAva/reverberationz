@@ -8,12 +8,12 @@ describe CsvParser do
   describe '#parse' do
     it 'parses pipe-deliminated files' do
       path = 'specs/fixtures/pipe_data.csv'
-      expect(CsvParser.new(path, '|').data).to eq(data)
+      expect(CsvParser.new(path, '|').raw_data).to eq(data)
     end
 
     it 'parses comma-deliminated files' do
       path = 'specs/fixtures/comma_data.csv'
-      expect(CsvParser.new(path, ',').data).to eq(data)
+      expect(CsvParser.new(path, ',').raw_data).to eq(data)
     end
   end
 end

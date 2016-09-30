@@ -2,7 +2,7 @@ require_relative 'customer'
 require 'CSV'
 
 class CsvParser
-  attr_reader :data, :customers
+  attr_reader :raw_data, :customers
 
   def initialize(path, delimiter)
     @path = path
@@ -21,24 +21,24 @@ class CsvParser
   end
 
   def create_customers!
-    @customers = @data.map{ |cust_data| Customer.new(cust_data)}
+    @customers = @raw_data.map{ |cust_data| Customer.new(cust_data)}
   end
 
   def read_file
-    @data = CSV::parse(File.open(@path).read, headers: true, col_sep: @delimiter)
+    @raw_data = CSV::parse(File.open(@path).read, headers: true, col_sep: @delimiter)
   end
 
   def fix_case!
-    @data = data.each do |customer|
+    @raw_data = raw_data.each do |customer|
       customer.each { |value| value.downcase! if value.class == String }
     end
   end
 
   def convert_dates!
-    @data = data.each {|customer| customer[:date_of_birth] = customer[:date_of_birth].to_date }
+    @raw_data = raw_data.each {|customer| customer[:date_of_birth] = customer[:date_of_birth].to_date }
   end
 
   def convert_csv_to_hash!
-    @data = data.map {|row| row.to_h.symbolize_keys! }
+    @raw_data = raw_data.map {|row| row.to_h.symbolize_keys! }
   end
 end
