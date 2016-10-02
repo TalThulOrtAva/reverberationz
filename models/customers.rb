@@ -9,7 +9,7 @@ class Customers
   end
 
   def refresh!
-    @all = DBAccessor.new.get_all_customers || []
+    @all = DBAccessor.new.customers_hash || []
   end
 
   # TODO create spec for Customers, add these from customer_spec

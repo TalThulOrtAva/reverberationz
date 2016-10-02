@@ -1,4 +1,4 @@
 #\ -p 3000
-require_relative 'api/reverb'
+require_relative 'config/application'
 
-run Reverb::Customer_API
+run Reverb::API

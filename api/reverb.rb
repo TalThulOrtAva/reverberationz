@@ -5,7 +5,7 @@ require_relative '../models/customers'
 require_relative '../models/csv_parser'
 
 module Reverb
-  class Customer_API < Grape::API
+  class API < Grape::API
     version 'v1', using: :header, vendor: 'goddess herself'
     format :json
     prefix :api
@@ -30,17 +30,17 @@ module Reverb
       end
 
       desc 'Returns all users in the db sorted by [gender, lname] as a json object'
-      get '/by_gender' do
+      get '/by-gender' do
         customers.refresh!.by_gender.to_json
       end
 
       desc 'Returns all users in the db sorted by last name desc as a json object'
-      get '/by_lname' do
+      get '/by-lname' do
         customers.refresh!.to_json
       end
 
       desc 'Returns all users in the db sorted by date of birth as a json object'
-      get '/by_date_of_birth' do
+      get '/by-date_of_birth' do
         customers.refresh!.to_json
       end
     end

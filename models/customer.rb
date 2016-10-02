@@ -1,3 +1,7 @@
+require 'json'
+require 'date'
+require 'faker'
+
 class Customer
   APPROVED_FIELDS = %i(email fname lname gender date_of_birth favorite_color)
   attr_accessor *APPROVED_FIELDS
@@ -8,7 +12,29 @@ class Customer
     @customer_data = instantiate_fields
   end
 
+  def to_h
+    APPROVED_FIELDS.each_with_object({}) { |field, hash| hash[field] = self.send(field) }
+  end
+
+  def to_json
+    to_h.to_json
+  end
+
   private
+
+  def self.generate_random
+    raw_attrs = APPROVED_FIELDS.each_with_object({}) { |field, hash|
+      case field
+        when :date_of_birth
+          hash[field] = Date.today-rand(10000)
+        when :email
+          hash[field] = Faker::Internet.email
+        else
+          hash[field] = ('a'..'z').to_a.shuffle[0, 8].join
+      end
+    }
+    Customer.new(raw_attrs)
+  end
 
   def instantiate_fields
     drop_unapproved_fields.each { |name, value| instance_variable_set("@#{name}", value) }
