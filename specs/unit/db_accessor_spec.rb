@@ -13,10 +13,25 @@ describe DBAccessor do
       db_record = accessor.get_customer(customer.email)
       expect(db_record.fname).to eq customer.fname
     end
+
+    it 'should not allow adding when the email already exists' do
+      accessor.add_customer(customer)
+      expect{ accessor.add_customer(customer) }.to raise_error NotUniqueError
+    end
   end
 
   describe '#update_customer' do
-    # TODO
+    it 'should update a customer record' do
+      accessor.add_customer(customer)
+      customer.lname = 'IWontLetYouFallApart'
+      accessor.update_customer(customer)
+
+      expect(accessor.get_customer(customer.email).lname).to eq customer.lname
+    end
+
+    it 'should not allow updating a record that does not exist' do
+      expect{ accessor.update_customer(customer) }.to raise_error CustomerDoesNotExist
+    end
   end
 
   describe '#expire_customer' do

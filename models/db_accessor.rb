@@ -18,13 +18,13 @@ class DBAccessor
   end
 
   def add_customer(customer)
-    return NotUniqueError if customer_hash(customer.email)
+    raise NotUniqueError if customer_hash(customer.email)
     update_customers_file(customers_hash << customer.to_h)
   end
 
   def update_customer(customer)
     existing = customer_hash(customer.email)
-    return CustomerDoesNotExist unless existing
+    raise CustomerDoesNotExist unless existing
     expire_customer(existing[:email])
 
     updated_file = customers_hash << customer.to_h
