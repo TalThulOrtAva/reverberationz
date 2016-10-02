@@ -2,7 +2,6 @@ require 'grape'
 require 'json'
 require 'pry'
 require_relative '../models/customers'
-require_relative '../models/csv_parser'
 
 module Reverb
   class API < Grape::API

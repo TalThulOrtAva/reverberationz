@@ -20,8 +20,7 @@ class Customer
     to_h.to_json
   end
 
-  private
-
+  # convenience for irb/pry testing
   def self.generate_random
     raw_attrs = APPROVED_FIELDS.each_with_object({}) { |field, hash|
       case field
@@ -35,6 +34,8 @@ class Customer
     }
     Customer.new(raw_attrs)
   end
+
+  private
 
   def instantiate_fields
     drop_unapproved_fields.each { |name, value| instance_variable_set("@#{name}", value) }
