@@ -1,6 +1,8 @@
 # reverberationz
 mostly an excuse to play with grape api and get in the always-neccessary modeling puzzles 
 
+also I listened to Nine Inch Nails's The Fragile the whole time I was writing this and I feel a little bit crazy now 
+
 ## install
 ```bundle install```
 
@@ -18,8 +20,5 @@ mostly an excuse to play with grape api and get in the always-neccessary modelin
 - If I could justify additional time spent refactoring, I'd start at the csv_parser.
 - Actually I would absolutely not because who the hell uses CSV files anymore?? 
 - DOWN WITH CSV 
-- UP WITH POSTING JSON 
-- Are you telling me you have an ftp landing zone for csv files laying around?? And sometimes they use pipes?? 
+- UP WITH JSON 
 - ...yeah yeah yeah I know the legacy app makes a lot of money. I didn't mean to start this conversation. 
-- ...omg okay sure I suppose it might be a better choice if the file is especially large.
-- I'm walking away now! You just keep talking to yourself! 
