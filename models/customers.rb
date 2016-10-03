@@ -21,7 +21,7 @@ class Customers
     when 'dob'
       by_dob
     else
-      @all
+      to_h
     end
   end
 
@@ -34,6 +34,7 @@ class Customers
   end
 
   def to_h
+    refresh!
     @all.map { |customer| customer.to_h }
   end
 
@@ -41,14 +42,14 @@ class Customers
 
   # TODO create spec for Customers, add these from customer_spec
   def by_gender
-    @all.sort_by{ |customer| [customer.gender, customer.lname] }
+    to_h.sort_by{ |customer| [customer[:gender], customer[:lname] ] }
   end
 
   def by_dob
-    @all.sort_by(&:date_of_birth)
+    to_h.sort_by{ |customer| customer[:date_of_birth] }
   end
 
   def by_lname
-    @all.sort_by(&:lname).reverse! # benchmark showed this as the fastest option, although that isn't intuitive
+    to_h.sort_by{ |customer| customer[:lname] }.reverse! # benchmark showed this as the fastest option, although that isn't intuitive
   end
 end

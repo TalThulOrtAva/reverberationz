@@ -23,23 +23,7 @@ module Reverb
 
       desc 'Returns all users in the db'
       get '' do
-        customers.refresh!
-        customers.to_h
-      end
-
-      desc 'Returns all users in the db sorted by [gender, lname] as a json object'
-      get '/by-gender' do
-        customers.refresh!.by_gender.json
-      end
-
-      desc 'Returns all users in the db sorted by last name desc as a json object'
-      get '/by-lname' do
-        customers.refresh!.json
-      end
-
-      desc 'Returns all users in the db sorted by date of birth as a json object'
-      get '/by-date_of_birth' do
-        customers.refresh!.json
+        customers.sort(params['sort'])
       end
     end
   end
