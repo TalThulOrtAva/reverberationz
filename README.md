@@ -1,8 +1,11 @@
 # reverberationz
 a thing 4 my friendz
 
-basically just playing with grape api
+## install
+```bundle install```
 
-from project root: 
-- 'bundle exec rspec specs' for tests
-- 'bundle exec rackup' to start
+## testing
+```bundle exec rspec specs``` 
+
+## mounting
+```bundle exec rackup' to start```
