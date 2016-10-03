@@ -1,5 +1,5 @@
 # reverberationz
-a thing 4 my friendz
+mostly an excuse to play with grape api and get in the always-neccessary modeling puzzles 
 
 ## install
 ```bundle install```
