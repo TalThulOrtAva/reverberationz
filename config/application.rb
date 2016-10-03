@@ -1,5 +1,4 @@
 require 'csv'
-require 'redis'
 require 'grape'
 require 'json'
 
