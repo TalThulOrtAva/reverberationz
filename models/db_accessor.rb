@@ -22,7 +22,7 @@ class DBAccessor
     update_customers_file(customers_hash << customer.to_h)
   end
 
-  # not used... yet
+  # was planning ahead for a PUT method...
   def update_customer(customer)
     existing = customer_hash(customer.email)
     raise CustomerDoesNotExist unless existing
@@ -62,4 +62,3 @@ end
 
 class NotUniqueError < StandardError; end
 class CustomerDoesNotExist < StandardError; end
-
