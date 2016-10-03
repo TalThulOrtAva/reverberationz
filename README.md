@@ -8,4 +8,4 @@ a thing 4 my friendz
 ```bundle exec rspec specs``` 
 
 ## mount
-```bundle exec rackup to start```
+```bundle exec rackup```
