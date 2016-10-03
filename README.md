@@ -3,7 +3,7 @@ mostly an excuse to play with grape api and get in the always-neccessary modelin
 
 also I listened to Nine Inch Nails's The Fragile the whole time I was writing this and I feel a little bit crazy now 
 
-## install
+## install dependencies 
 ```bundle install```
 
 ## test
