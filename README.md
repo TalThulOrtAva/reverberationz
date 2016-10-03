@@ -14,9 +14,13 @@ also I listened to Nine Inch Nails's The Fragile the whole time I was writing th
 
 ## api
 ```get /api/customers/```
+
 ```get /api/customers/?sort=gender```
+
 ```get /api/customers/?sort=lname```
+
 ```get /api/customers/?sort=dob```
+
 ```post /api/customers/```
 
 ## post-dev thoughts
