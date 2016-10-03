@@ -4,8 +4,8 @@ a thing 4 my friendz
 ## install
 ```bundle install```
 
-## testing
+## test
 ```bundle exec rspec specs``` 
 
-## mounting
+## mount
 ```bundle exec rackup' to start```
