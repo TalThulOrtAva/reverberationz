@@ -28,7 +28,7 @@ also I listened to Nine Inch Nails's The Fragile the whole time I was writing th
 - I initially wrote it all using redis instead of a flat file. (whoops) Shoulda read the instructions a bit closer. Thankfully it was a fairly clean switch. There might be some remnants of it somewhere though...
 - I would rather use the Customer#generate_random method than use the fixtures for unit test data, but I didn't write it until fairly late into the project. Still works. /shrug
 - Grape is p cool. Probably the easiest part of the project even though I'd not used it. 
-- I would rather make the API's sorting interface dynamic + add pagination. So the interface is at least written to where it wouldn't need to be changed as a result. 
+- I would prefer make the sorting dynamic + add pagination. So the interface is at least written to where it wouldn't need to be changed as a result. 
 - If I could justify additional time spent refactoring, I'd start at the csv_parser.
 - Actually I would absolutely not because who the hell uses CSV files anymore?? 
 - DOWN WITH CSV 
