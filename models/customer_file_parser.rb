@@ -1,9 +1,8 @@
 require_relative 'customer'
 require 'csv'
 
-# TODO name class better or increase scope, it only works with customers
 # sometimes I feel like the CSV lib is intentionally clunky explicitly for code challenges
-class CSVParser
+class CustomerFileParser
   attr_reader :raw_data, :customers
 
   def initialize(path, delimiter)

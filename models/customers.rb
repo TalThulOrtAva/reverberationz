@@ -1,8 +1,6 @@
 require_relative 'db_accessor'
 
 class Customers
-  attr_accessor :all
-
   def initialize
     @db = DBAccessor.new
     refresh!
@@ -45,7 +43,7 @@ class Customers
 
   private
 
-  # TODO create spec for Customers, add these from customer_spec
+  # testing these feels silly bc I'd just be testing the #sort_by method
   def by_gender
     to_h.sort_by{ |customer| [customer[:gender], customer[:lname] ] }
   end

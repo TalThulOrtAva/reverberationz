@@ -20,7 +20,7 @@ class Customer
     to_h.to_json
   end
 
-  # convenience for irb/pry testing
+  # convenience for irb/pry/specs
   def self.generate_random
     raw_attrs = APPROVED_FIELDS.each_with_object({}) { |field, hash|
       case field

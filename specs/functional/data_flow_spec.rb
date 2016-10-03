@@ -1,10 +1,9 @@
 require_relative  'spec_helper'
 
 describe 'csv to redis' do
-
   it 'should import csv files to the json db file' do
     db = DBAccessor.new
-    parsed = CSVParser.new('specs/fixtures/comma_data.csv', ',')
+    parsed = CustomerFileParser.new('specs/fixtures/comma_data.csv', ',')
     parsed.customers.each { |customer| db.add_customer(customer) }
     customers_from_db = db.get_customers
     expect(customers_from_db.count).to eq(2)
