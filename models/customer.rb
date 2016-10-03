@@ -9,11 +9,11 @@ class Customer
   def initialize(attrs)
     raise EmailRequiredForCustomer unless attrs[:email]
     @raw_attrs = attrs
-    @customer_data = instantiate_fields
+    instantiate_fields!
   end
 
   def to_h
-    APPROVED_FIELDS.each_with_object({}) { |field, hash| hash[field] = self.send(field) }
+    APPROVED_FIELDS.each_with_object({}) { |field, hash| hash[field] = self.send(field) }.symbolize_keys!
   end
 
   def json
@@ -37,7 +37,7 @@ class Customer
 
   private
 
-  def instantiate_fields
+  def instantiate_fields!
     drop_unapproved_fields.each { |name, value| instance_variable_set("@#{name}", value) }
   end
 

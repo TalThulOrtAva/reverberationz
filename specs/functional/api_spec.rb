@@ -42,7 +42,8 @@ describe Reverb::API do
 
   it 'should POST a new customer to the db' do
     customer = Customer.generate_random
-    post '/api/customers/', 'customer' => customer
+    customer_json = customer.json
+    post '/api/customers', { customer: customer_json }, 'Content-Type' => 'application/json'
     expect(last_response.status).to eq(201)
   end
 end

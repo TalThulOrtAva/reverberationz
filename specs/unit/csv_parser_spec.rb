@@ -17,11 +17,4 @@ describe CSVParser do
       expect(CSVParser.new(path, ',').raw_data).to eq(data)
     end
   end
-
-  describe '#parse_row' do
-    it 'parses a string and returns a customer' do
-      customer = CSVParser.parse_row(csv_string, ',')
-      row1.each { |key, value| expect(customer.send(key) == value) }
-    end
-  end
 end

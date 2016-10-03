@@ -16,13 +16,14 @@ module Reverb
 
     resource :customers do
       desc 'Posts a new user to the db'
-      post '' do
-        new_customer = CSVParser.parse_row(:data, params[:delimiter])
+      post do
+        customer_hash = JSON.parse(params[:customer]).symbolize_keys!
+        new_customer = Customer.new(customer_hash)
         customers.add(new_customer)
       end
 
       desc 'Returns all users in the db'
-      get '' do
+      get do
         customers.sort(params['sort'])
       end
     end

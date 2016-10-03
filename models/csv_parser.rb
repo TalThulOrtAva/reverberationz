@@ -12,12 +12,6 @@ class CSVParser
     import!
   end
 
-  def self.parse_row(string, delimiter)
-    data = string.parse_csv(headers: true, col_sep: delimiter).to_h.symbolize_keys!
-    data[:date_of_birth] = data[:date_of_birth].to_date
-    Customer.new(data)
-  end
-
   private
 
   def import!
