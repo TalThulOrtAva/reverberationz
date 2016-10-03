@@ -16,7 +16,7 @@ class Customer
     APPROVED_FIELDS.each_with_object({}) { |field, hash| hash[field] = self.send(field) }
   end
 
-  def to_json
+  def json
     to_h.to_json
   end
 

@@ -22,6 +22,7 @@ class DBAccessor
     update_customers_file(customers_hash << customer.to_h)
   end
 
+  # not used... yet
   def update_customer(customer)
     existing = customer_hash(customer.email)
     raise CustomerDoesNotExist unless existing

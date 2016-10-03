@@ -1,4 +1,5 @@
 require 'rspec'
 require 'rack/test'
+require 'active_support/all'
 require_relative '../../api/reverb'
 require_relative '../../models/customer'
