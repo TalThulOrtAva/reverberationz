@@ -29,7 +29,8 @@ also I listened to Nine Inch Nails's The Fragile the whole time I was writing th
 - I would rather use the Customer#generate_random method than use the fixtures for unit test data, but I didn't write it until fairly late into the project. Still works. /shrug
 - Gender is an unvalidated string by intention.
 - Grape is p cool. Probably the easiest part of the project even though I'd not used it. 
-- I would prefer make the sorting dynamic + add pagination. So the interface is at least written to where it wouldn't need to be changed as a result. 
+- I would prefer to make the sorting dynamic + add pagination, so the api interface is designed to handle that without major changes.
+- Similarly, the POST method is designed so that if/when posting multiple customers at once becomes a desired feature, it could be implemented without changing the original interface. Needs more data validation though. 
 - If I could justify additional time spent refactoring, I'd start at the csv_parser.
 - Actually I would absolutely not because who the hell uses CSV files anymore?? 
 - DOWN WITH CSV 
