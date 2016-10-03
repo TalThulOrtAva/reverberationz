@@ -25,7 +25,7 @@ class Customer
     raw_attrs = APPROVED_FIELDS.each_with_object({}) { |field, hash|
       case field
         when :date_of_birth
-          hash[field] = Date.today-rand(10000)
+          hash[field] = (Date.today-rand(10000)).strftime('%Y-%M-%d')
         when :email
           hash[field] = Faker::Internet.email
         else

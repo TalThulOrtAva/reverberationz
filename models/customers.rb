@@ -29,6 +29,7 @@ class Customers
     @db.add_customer(customer)
   end
 
+  # not used
   def update(customer)
     @db.update_customer(customer)
   end
@@ -36,6 +37,10 @@ class Customers
   def to_h
     refresh!
     @all.map { |customer| customer.to_h }
+  end
+
+  def self.find(email)
+    DBAccessor.new.get_customer(email)
   end
 
   private

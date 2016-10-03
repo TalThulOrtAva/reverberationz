@@ -30,23 +30,4 @@ describe Customer do
       expect { Customer.new({}) }.to raise_error EmailRequiredForCustomer
     end
   end
-
-  describe 'Sorting Behavior' do
-    let(:customers) { [ customer1, customer2, customer3, customer4, customer5 ] }
-
-    it 'can be sorted by gender asc, then last name asc' do
-      sorted = customers.sort_by{ |customer| [customer.gender, customer.lname] }
-      expect(sorted).to eq(([customer5, customer4, customer2, customer1, customer3]))
-    end
-
-    it 'can be sorted by date of birth, ascending' do
-      sorted = customers.sort_by(&:date_of_birth)
-      expect(sorted).to eq(([customer2, customer1, customer4, customer3, customer5]))
-    end
-
-    it 'can be sorted by last name, descending' do
-      sorted = customers.sort_by(&:lname).reverse! # benchmark showed this was fastest
-      expect(sorted).to eq(([customer1, customer2, customer3, customer4, customer5]))
-    end
-  end
 end
