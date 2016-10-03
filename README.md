@@ -11,6 +11,7 @@ also I listened to Nine Inch Nails's The Fragile the whole time I was writing th
 
 ## mount
 ```bundle exec rackup```
+change port in config.ru if desired 
 
 ## api
 ```get /api/customers/```
@@ -36,3 +37,7 @@ also I listened to Nine Inch Nails's The Fragile the whole time I was writing th
 - DOWN WITH CSV 
 - UP WITH JSON 
 - ...yeah yeah yeah I know the legacy app makes a lot of money. I didn't mean to start this conversation. 
+
+## caveats
+- If you want to run tests on unix, you might wanna edit this line:
+https://github.com/a-greenish-red/reverberationz/blob/master/models/db_accessor.rb#L41
