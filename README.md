@@ -12,6 +12,13 @@ also I listened to Nine Inch Nails's The Fragile the whole time I was writing th
 ## mount
 ```bundle exec rackup```
 
+## api
+```get /api/customers/```
+```get /api/customers/?sort=gender```
+```get /api/customers/?sort=lname```
+```get /api/customers/?sort=dob```
+```post /api/customers/```
+
 ## post-dev thoughts
 - Should have decided which class would be responsible for date conversions much sooner, could be cleaner
 - I initially wrote it all using redis instead of a flat file. (whoops) Shoulda read the instructions a bit closer. Thankfully it was a fairly clean switch. There might be some remnants of it somewhere though...
